@@ -4,7 +4,6 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createGlobalStyle } from 'styled-components';
-import { theme } from './styles';
 import reset from 'styled-reset';
 
 const GlobalStyles = createGlobalStyle`

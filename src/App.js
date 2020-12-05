@@ -1,8 +1,14 @@
-import React from 'react';
-import { Route } from 'react-router-dom';
-import styled from 'styled-components';
-import { media, size, theme } from './styles';
-import Sidebar from './pages/Sidebar';
+import React from "react";
+import { Route } from "react-router-dom";
+import styled from "styled-components";
+import { media, size, theme } from "./styles";
+import Sidebar from "./components/sidebar/Sidebar";
+import ArticlesPage from "./pages/ArticlesPage";
+import BookmarkPage from "./pages/BookmarkPage";
+import LatestPage from "./pages/LatestPage";
+import MyPage from "./pages/MyPage";
+import mainPage from "./pages/mainPage";
+import HeaderTemplate from "./components/header/HeaderTemplate";
 
 const RoutePage = styled.div`
   position: relative;
@@ -13,7 +19,6 @@ const RoutePage = styled.div`
   ${media.md`min-width: 480px`}
   ${media.xl`min-width: 800px`}
   ${media.xl`max-width: 960px`}
-  border: 1px solid red;
   ${media.md`top: 24px`}
   ${media.md`width: 696px`}
   ${media.lg`width: 920px`}
@@ -27,7 +32,14 @@ function App() {
   return (
     <>
       <Sidebar />
-      <RoutePage>와랄라</RoutePage>
+      <RoutePage>
+        <HeaderTemplate />
+        <Route component={ArticlesPage} path="/article" />
+        <Route component={BookmarkPage} path="/bookmark" />
+        <Route component={LatestPage} path="/latest" />
+        <Route component={MyPage} path="/mypage" />
+        <Route component={mainPage} exact path="/" />
+      </RoutePage>
     </>
   );
 }
