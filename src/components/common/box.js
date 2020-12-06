@@ -1,17 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Box = styled.div`
+const BoxTemplate = styled.div`
+    background: #fff;
     border-radius: 20px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.02);
+    box-shadow: 0 0 15px rgba(0,0,0,0.04);
+    overflow: hidden;
+    
 `;
 
-const box = ({children}) => {
+const Box = ({children}) => {
     return (
-        <Box>
+        <BoxTemplate>
             {children}
-        </Box>
+        </BoxTemplate>
     );
 };
 
-export default box;
+export default Box;

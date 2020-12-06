@@ -3,15 +3,16 @@ import { Route } from "react-router-dom";
 import styled from "styled-components";
 import { media, size, theme } from "./styles";
 import Sidebar from "./components/sidebar/Sidebar";
-import ArticlesPage from "./pages/ArticlesPage";
+import TrendPage from "./pages/TrendPage";
 import BookmarkPage from "./pages/BookmarkPage";
-import LatestPage from "./pages/LatestPage";
 import MyPage from "./pages/MyPage";
 import mainPage from "./pages/mainPage";
 import HeaderTemplate from "./components/header/HeaderTemplate";
 
 const RoutePage = styled.div`
   position: relative;
+  max-width: 100vw;
+  overflow: hidden;
   margin: 16px;
   transition: all 1s ease;
   ${media.md`margin: 0 auto`};
@@ -34,9 +35,8 @@ function App() {
       <Sidebar />
       <RoutePage>
         <HeaderTemplate />
-        <Route component={ArticlesPage} path="/article" />
+        <Route component={TrendPage} path="/trend" />
         <Route component={BookmarkPage} path="/bookmark" />
-        <Route component={LatestPage} path="/latest" />
         <Route component={MyPage} path="/mypage" />
         <Route component={mainPage} exact path="/" />
       </RoutePage>

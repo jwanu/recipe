@@ -1,9 +1,10 @@
 import React from 'react';
+import RecipeoftheDay from '../components/main/RecipeoftheDay';
 
 const mainPage = () => {
     return (
         <div>
-            메인인덱스페이지
+            <RecipeoftheDay />
         </div>
     );
 };

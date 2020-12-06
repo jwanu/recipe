@@ -3,10 +3,10 @@ import styled, { css } from "styled-components";
 import { media, color, size } from "../../styles";
 import { Link, NavLink } from "react-router-dom";
 import {
-  RiSunFill,
-  RiBookmark3Fill,
-  RiUser5Fill,
-  RiArticleFill,
+  RiHomeFill,
+  RiBookmarkFill,
+  RiUserFill,
+  RiFireFill,
 } from "react-icons/ri";
 
 const SideTemplateBlock = styled.div`
@@ -72,10 +72,12 @@ const SideTemplateBlock = styled.div`
       }
       svg {
         font-size: ${size.font.lg};
-        ${media.md`font-size:36px;`}
+        ${media.md`font-size:32px;`}
         transition: all .2s ease;
       }
       span {
+        display: none;
+        ${media.md`display: block;`}
         margin-top: 4px;
         ${media.md`margin: 0 12px;`}
         font-weight: 600;
@@ -101,20 +103,20 @@ const SideBar = () => {
         <Link to="/">SPOONS</Link>
       </div>
       <div className="menu">
-        <NavLink to="/latest" activeClassName={'active'}>
-          <RiSunFill />
-          <span>Latest</span>
+        <NavLink to="/" activeClassName={'active'}>
+          <RiHomeFill />
+          <span>Home</span>
         </NavLink>
-        <NavLink to="/article" activeClassName={'active'}>
-          <RiArticleFill />
-          <span>Articles</span>
+        <NavLink to="/trend" activeClassName={'active'}>
+          <RiFireFill />
+          <span>Trend</span>
         </NavLink>
         <NavLink to="/bookmark" activeClassName={'active'}>
-          <RiBookmark3Fill />
+          <RiBookmarkFill />
           <span>Bookmark</span>
         </NavLink>
         <NavLink to="/mypage" activeClassName={'active'}>
-          <RiUser5Fill />
+          <RiUserFill />
           <span>Mypage</span>
         </NavLink>
       </div>
