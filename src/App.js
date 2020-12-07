@@ -15,18 +15,16 @@ const RoutePage = styled.div`
   overflow: hidden;
   margin: 16px;
   transition: all 1s ease;
-  ${media.md`margin: 0 auto`};
-  ${media.xl`margin-left: 0`};
-  ${media.md`min-width: 480px`}
-  ${media.xl`min-width: 800px`}
-  ${media.xl`max-width: 960px`}
-  ${media.md`top: 24px`}
-  ${media.md`width: 696px`}
-  ${media.lg`width: 920px`}
-  ${media.xl`width: auto`}
-  ${media.xl`left:0`}
-  ${media.xl`transform: translateX(344px)`}
-  ${media.md`padding-top: 28px`}
+  ${media.md`margin: 0 auto;`}
+  ${media.md`min-width: 480px;`}
+  ${media.md`top: 24px;`}
+  ${media.md`width: 696px;`}
+  ${media.md`padding-top: 28px;`}
+  ${media.lg`width: 920px;`}
+  /* ${media.xl`transform: translateX(344px);`} */
+  ${media.xl`transform: translateX(144px);`}
+  ${media.xl`min-width: 800px;`}
+  ${media.xl`max-width: 852px;`}
 `;
 
 function App() {

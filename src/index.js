@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
+import { media } from './styles';
 
 const GlobalStyles = createGlobalStyle`
   ${reset}
@@ -20,6 +21,9 @@ const GlobalStyles = createGlobalStyle`
     background-color: transparent;
     border: none;
     outline: none;
+  }
+  button {
+    cursor: pointer;
   }
   ol, ul, li {
     list-style: none;

@@ -10,7 +10,7 @@ import {
 } from "react-icons/ri";
 
 const SideTemplateBlock = styled.div`
-  position: absolute;
+  position: fixed;
   z-index: 1000;
   background: #fff;
   border-radius: 40px;
@@ -26,10 +26,11 @@ const SideTemplateBlock = styled.div`
   bottom: 16px;
   ${media.md`bottom:24px`};
   ${media.md`top:24px`};
-  ${media.md`width:296px`};
-  ${media.md`transform:translateX(-272px)`};
-  ${media.xl`transform:translateX(24px)`};
+  ${media.md`width:276px`};
+  ${media.md`transform:translateX(-252px)`};
   ${media.md`&:hover {transform:translateX(24px)}`};
+  ${media.xl`transform:translateX(calc(24px));`};
+  ${media.xl`margin-left:calc(calc(100% - 1216px) / 2);`};
 
   .logo-area {
     display: none;
@@ -103,7 +104,7 @@ const SideBar = () => {
         <Link to="/">SPOONS</Link>
       </div>
       <div className="menu">
-        <NavLink to="/" activeClassName={'active'}>
+        <NavLink exact to="/" activeClassName={'active'}>
           <RiHomeFill />
           <span>Home</span>
         </NavLink>

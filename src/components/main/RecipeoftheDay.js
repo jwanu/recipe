@@ -4,9 +4,8 @@ import { size } from '../../styles';
 import { Box1 } from '../../styles/components';
 
 const SectionName = styled.h2`
- font-size:${size.font.md};
  font-weight: bold;
- margin-bottom: 16px;
+ margin-bottom: 8px;
 `;
 
 const BannerBox = styled.div`
