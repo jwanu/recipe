@@ -1,18 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
+import { media } from '../../styles';
+import { Box1 } from '../../styles/components';
 
 const LinkIconsTemplate = styled.div`
   margin-top: 16px;
+  ${media.md`margin-top: 24px;`}
   display: flex;
+  ${media.md`flex-wrap: wrap;`}
+  ${media.md`width: calc(calc(100% - 16px) / 2);`}
+  ${media.md`height: 356px;`}
+  ${media.md`justify-content: space-between;`}
+  ${media.md`align-content: space-between;`}
+  ${media.lg`width: 296px;`}
+  ${media.xl`width: 280px;`}
+  transition: all .2s ease;
   button {
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: space-around;
-    & + & {
-      margin-left: 16px;
-    }
+    ${media.md`width: calc(calc(100% - 16px) / 2);`}
+    ${media.md`height: 170px;`}
+    ${media.md`${Box1}`}
+    ${media.md`flex:initial;`}
+    transition: all .2s ease;
     svg {
       height: 44px;
     }

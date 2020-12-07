@@ -5,6 +5,7 @@ import { Box1 } from '../../styles/components';
 
 const RecipeListTemplate = styled.div`
   position: relative;
+  width: 100%;
   margin-top: 16px;
   h2 {
     font-weight: bold;
@@ -22,27 +23,28 @@ const RecipeListTemplate = styled.div`
       right: 0;
       bottom: 0;
       left: 0;
-      background: linear-gradient(90deg, rgba(246, 248, 252, 0), 85%, rgba(246, 248, 252, 1));
+      background: linear-gradient(90deg, rgba(246, 248, 252, 0), 95%, rgba(246, 248, 252, 1));
       pointer-events: none;
       z-index: 1;
-      ${media.md`display: none;`}
+      ${media.lg`display: none;`}
     }
 
     .slider {
       display: flex;
       flex-wrap: nowrap;
       width: fit-content;
+      ${media.md`justify-content: space-between;`}
 
       .slideItem {
         ${Box1}
         width: 36vw;
         height: 36vw;
-        ${media.md`width: 168px;`}
-        ${media.md`height: 168px;`}
-        ${media.lg`width: 224px;`}
-        ${media.lg`height: 224px;`}
+        ${media.md`width: 162px;`}
+        ${media.md`height: 162px;`}
+        ${media.lg`width: 218px;`}
+        ${media.lg`height: 218px;`}
         & + .slideItem {
-          margin-left: 8px;
+          margin-left: 16px;
         }
       }
     }
@@ -59,6 +61,7 @@ const RecipeList = ({ title }) => {
           <div className="slideItem">레시피2</div>
           <div className="slideItem">레시피3</div>
           <div className="slideItem">레시피4</div>
+          <div className="slideItem">레시피5</div>
         </div>
       </div>
     </RecipeListTemplate>
