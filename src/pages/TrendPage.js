@@ -1,11 +1,11 @@
 import React from 'react';
 
-const MyPage = () => {
+const TrendPage = () => {
     return (
         <div>
-            마이페이지
+            Trend페이지
         </div>
     );
 };
 
-export default MyPage;
+export default TrendPage;

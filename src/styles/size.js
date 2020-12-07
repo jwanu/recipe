@@ -1,10 +1,12 @@
 const calcRem = (size) => `${size / 16}rem`;
 
 const font = {
+  xs: calcRem(12),
   sm: calcRem(14),
   md: calcRem(18),
   lg: calcRem(26),
   xl: calcRem(46),
+  xxl: calcRem(64),
 };
 
 const padding = {
