@@ -7,7 +7,7 @@ const sizes = {
   xl: 1216,
 };
 
-// max container width : 544 / 720 / 960 / 1152 
+// max container width : 544 / 720 / 944 / 1168 - 좌우마진 24px씩으로.
 
 const media = Object.keys(sizes).reduce((acc, label) => {
   acc[label] = (...args) => css`

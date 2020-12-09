@@ -1,9 +1,10 @@
 import React from 'react';
+import RecipePage from './RecipePage';
 
 const MyPage = () => {
     return (
         <div>
-            마이페이지
+            <RecipePage />
         </div>
     );
 };

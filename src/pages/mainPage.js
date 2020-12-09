@@ -10,6 +10,7 @@ const mainPage = () => {
       <RecipeoftheDay />
       <LinkIcons />
       <RecipeList title="Bookmarked" />
+      <RecipeList title="History" />
     </MainpageTemplate>
   );
 };

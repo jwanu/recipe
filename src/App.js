@@ -15,10 +15,12 @@ const RoutePage = styled.div`
   overflow: hidden;
   margin: 16px;
   transition: all .2s ease;
-  ${media.lg`margin: 0 auto;`}
+  ${media.lg`margin: 16px 0;`}
   ${media.lg`top: 24px;`}
   ${media.lg`padding-top: 28px;`}
-  ${media.lg`width: 920px;`}
+  ${media.lg`width: calc(100% - 272px);`}
+  ${media.lg`transform: translateX(248px);`}
+  ${media.xl`margin: 0 auto;`}
   ${media.xl`width: 872px;`}
   ${media.xl`transform: translateX(154px);`}
 `;

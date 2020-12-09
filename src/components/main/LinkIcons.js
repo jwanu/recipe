@@ -9,11 +9,12 @@ const LinkIconsTemplate = styled.div`
   display: flex;
   ${media.md`flex-wrap: wrap;`}
   ${media.md`width: calc(calc(100% - 16px) / 2);`}
-  ${media.md`height: 356px;`}
+  ${media.md`height: calc(calc(100vw - 64px) / 2);`}
   ${media.md`justify-content: space-between;`}
   ${media.md`align-content: space-between;`}
-  ${media.lg`width: 296px;`}
-  ${media.xl`width: 280px;`}
+  ${media.lg`height: calc(calc(100vw - 288px) / 2);`}
+  ${media.xl`width: calc(calc(100% - 32px) / 3);`}
+  ${media.xl`height: 272px;`}
   transition: all .2s ease;
   button {
     flex: 1;
@@ -22,7 +23,8 @@ const LinkIconsTemplate = styled.div`
     justify-content: center;
     align-items: space-around;
     ${media.md`width: calc(calc(100% - 16px) / 2);`}
-    ${media.md`height: 170px;`}
+    ${media.md`height: calc(calc(100% - 16px) / 2);`}
+    ${media.xl`height: calc(calc(100% - 16px) / 2);`}
     ${media.md`${Box1}`}
     ${media.md`flex:initial;`}
     transition: all .2s ease;

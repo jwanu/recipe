@@ -23,10 +23,9 @@ const SideTemplateBlock = styled.div`
   ${media.lg`right:initial;`};
   ${media.lg`bottom:24px;`};
   ${media.lg`top:24px;`};
-  ${media.lg`width:280px;`};
-  ${media.lg`transform:translateX(-256px);`};
-  ${media.lg`&:hover {transform:translateX(24px)};`};
-  ${media.xl`transform:translateX(calc(24px));`};
+  ${media.lg`width:200px;`};
+  ${media.lg`transform:translateX(24px);`};
+  ${media.xl`width:280px;`};
   ${media.xl`margin-left:calc(calc(100% - 1216px) / 2);`};
 
   .logo-area {

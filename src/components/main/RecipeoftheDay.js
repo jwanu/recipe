@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { media, size } from '../../styles';
+import { color, media, size } from '../../styles';
 import { Box1 } from '../../styles/components';
 
 const RecipeoftheDayTemplate = styled.div`
@@ -8,13 +8,12 @@ const RecipeoftheDayTemplate = styled.div`
     flex-direction: column;
     ${media.md`margin-right: 16px;`}
     ${media.md`width: calc(calc(100% - 16px) / 2);`}
-    ${media.md`height: 380px;`}
-    ${media.lg`width:608px;`}
-    ${media.xl`width:576px;`}
+    ${media.xl`width: calc(calc(calc(calc(100% - 32px) / 3) * 2) + 16px);`}
     transition: all .2s ease;
 `;
 
 const SectionName = styled.h2`
+  color: ${color.orange[7]};
   font-weight: bold;
   margin-bottom: 8px;
 `;
@@ -23,27 +22,26 @@ const BannerBox = styled.div`
   ${Box1}
   width: 100%;
   height: 80vw;
-  ${media.md`height: 100%;`}
+  ${media.md`height: calc(calc(100vw - 64px) / 2);`}
+  ${media.lg`height: calc(calc(100vw - 288px) / 2);`}
+  ${media.xl`height:272px;`}
   padding: 16px;
   position: relative;
-  background-image: url('https://webknox.com/recipeImages/716429-556x370.jpg');
+  background-image: url('images/recipeday.jpg');
   background-size: cover;
+  background-position: center;
   display: flex;
   align-items: flex-end;
   &::before {
     content: '';
-    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));
+    background: linear-gradient(rgba(0, 0, 0, 0), 70%, rgba(0, 0, 0, 0.1));
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
   }
-  div {
-    ${Box1}
-    width: 100%;
-    height: 20vw;
-    z-index: 1;
+  &:hover {
   }
 `;
 
@@ -52,7 +50,6 @@ const RecipeoftheDay = () => {
     <RecipeoftheDayTemplate>
       <SectionName>Recipe of the Day</SectionName>
       <BannerBox>
-        <div></div>
       </BannerBox>
     </RecipeoftheDayTemplate>
   );

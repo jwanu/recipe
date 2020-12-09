@@ -23,7 +23,7 @@ const RecipeListTemplate = styled.div`
       right: 0;
       bottom: 0;
       left: 0;
-      background: linear-gradient(90deg, rgba(246, 248, 252, 0), 95%, rgba(246, 248, 252, 1));
+      background: linear-gradient(90deg, rgba(246, 248, 252, 0), 98%, rgba(246, 248, 252, 1));
       pointer-events: none;
       z-index: 1;
       ${media.lg`display: none;`}
@@ -39,10 +39,12 @@ const RecipeListTemplate = styled.div`
         ${Box1}
         width: 36vw;
         height: 36vw;
-        ${media.md`width: 162px;`}
-        ${media.md`height: 162px;`}
-        ${media.lg`width: 218px;`}
-        ${media.lg`height: 218px;`}
+        ${media.md`width: calc(calc(100vw - 80px) / 4);`}
+        ${media.md`height: calc(calc(100vw - 80px) / 4);`}
+        ${media.lg`width: calc(calc(100vw - 320px) / 4);`}
+        ${media.lg`height: calc(calc(100vw - 320px) / 4);`}
+        ${media.xl`width: 206px;`}
+        ${media.xl`height: 206px;`}
         & + .slideItem {
           margin-left: 16px;
         }

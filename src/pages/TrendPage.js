@@ -1,9 +1,11 @@
 import React from 'react';
+import LinkIcons from '../components/main/LinkIcons';
+import AutocompleteContainer from '../containers/AutocompleteContainer';
 
 const TrendPage = () => {
     return (
         <div>
-            Trend페이지
+            <AutocompleteContainer />
         </div>
     );
 };
