@@ -7,18 +7,17 @@ import { RiHomeFill, RiBookmarkFill, RiUserFill, RiFireFill } from 'react-icons/
 const SideTemplateBlock = styled.div`
   position: fixed;
   z-index: 1000;
-  background: #fff;
   border-radius: 40px;
+  background: linear-gradient(45deg, #ffffff, #f6f8fc);
+  box-shadow: 6px 6px 10px #d8dade, -6px -6px 10px #ffffff;
   padding: 12px 24px;
   transition: all 0.5s ease;
-  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.06);
   left: 16px;
   right: 16px;
   bottom: 16px;
   ${media.md`width: 480px;`}
   ${media.md`margin: 0 auto;`}
   ${media.lg`padding: 28px;`}
-  ${media.lg`box-shadow: 8px 0 32px rgba(0, 0, 0, 0.06);`};
   ${media.lg`left:initial;`};
   ${media.lg`right:initial;`};
   ${media.lg`bottom:24px;`};
@@ -31,6 +30,12 @@ const SideTemplateBlock = styled.div`
   .logo-area {
     display: none;
     ${media.lg`display:block`};
+    a {
+      font-size: ${size.font.lg};
+      font-weight: bold;
+      color: #f6f8fc;
+      text-shadow: 2px 2px 3px #d8dade, -2px -2px 3px #ffffff;
+    }
   }
   .menu {
     display: flex;
@@ -44,7 +49,7 @@ const SideTemplateBlock = styled.div`
       display: flex;
       flex-direction: column;
       align-items: center;
-      color: ${color.gray[8]};
+      color: ${color.gray[6]};
       transition: all 0.2s ease;
       position: relative;
       ${media.lg`flex: initial;`}
@@ -63,13 +68,14 @@ const SideTemplateBlock = styled.div`
         right: 0;
         bottom: -4px;
         opacity: 0;
-        background: ${color.orange[0]};
+        background: #f6f8fc;
+        box-shadow: inset 4px 4px 10px #d8dade, inset -6px -6px 6px #ffffff;
         border-radius: 10px;
         transition: all 0.2s ease;
       }
       svg {
         font-size: ${size.font.lg};
-        ${media.lg`font-size:32px;`}
+        ${media.lg`font-size:28px;`}
         transition: all .2s ease;
       }
       span {
@@ -82,12 +88,14 @@ const SideTemplateBlock = styled.div`
         ${media.lg`font-size: ${size.font.sm};`}
       }
       &.active {
-        svg {
-          color: ${color.orange[7]};
-        }
+          color: ${color.gray[8]};
         &::before {
           opacity: 1;
         }
+      }
+      &:hover {
+          color: ${color.gray[7]};
+        
       }
     }
   }
@@ -97,7 +105,7 @@ const SideBar = () => {
   return (
     <SideTemplateBlock>
       <div className="logo-area">
-        <Link to="/">SPOONS</Link>
+        <Link to="/">RECIPE</Link>
       </div>
       <div className="menu">
         <NavLink exact to="/" activeClassName={'active'}>

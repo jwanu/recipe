@@ -4,22 +4,25 @@ import { color, media, size } from '../../styles';
 import { Box1 } from '../../styles/components';
 
 const RecipeoftheDayTemplate = styled.div`
-    display: flex;
-    flex-direction: column;
-    ${media.md`margin-right: 16px;`}
-    ${media.md`width: calc(calc(100% - 16px) / 2);`}
+  display: flex;
+  flex-direction: column;
+  ${media.md`margin-right: 16px;`}
+  ${media.md`width: calc(calc(100% - 16px) / 2);`}
     ${media.xl`width: calc(calc(calc(calc(100% - 32px) / 3) * 2) + 16px);`}
     transition: all .2s ease;
 `;
 
 const SectionName = styled.h2`
-  color: ${color.orange[7]};
+  color: ${color.gray[8]};
+  text-shadow: 2px 2px 3px #d8dade, -2px -2px 3px #ffffff;
   font-weight: bold;
   margin-bottom: 8px;
 `;
 
 const BannerBox = styled.div`
-  ${Box1}
+  border-radius: 40px;
+  box-shadow: 6px 6px 6px #d8dade, -6px -6px 6px #ffffff;
+  overflow: hidden;
   width: 100%;
   height: 80vw;
   ${media.md`height: calc(calc(100vw - 64px) / 2);`}
@@ -49,8 +52,7 @@ const RecipeoftheDay = () => {
   return (
     <RecipeoftheDayTemplate>
       <SectionName>Recipe of the Day</SectionName>
-      <BannerBox>
-      </BannerBox>
+      <BannerBox></BannerBox>
     </RecipeoftheDayTemplate>
   );
 };

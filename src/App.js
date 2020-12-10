@@ -8,11 +8,12 @@ import BookmarkPage from "./pages/BookmarkPage";
 import MyPage from "./pages/MyPage";
 import mainPage from "./pages/mainPage";
 import HeaderTemplate from "./components/header/HeaderTemplate";
+import SearchPage from "./pages/SearchPage";
 
 const RoutePage = styled.div`
   position: relative;
   max-width: 100%;
-  overflow: hidden;
+  overflow: visible;
   margin: 16px;
   transition: all .2s ease;
   ${media.lg`margin: 16px 0;`}
@@ -34,6 +35,7 @@ function App() {
         <Route component={TrendPage} path="/trend" />
         <Route component={BookmarkPage} path="/bookmark" />
         <Route component={MyPage} path="/mypage" />
+        <Route component={SearchPage} path="/search/:query" />
         <Route component={mainPage} exact path="/" />
       </RoutePage>
     </>

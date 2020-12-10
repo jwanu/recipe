@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { media } from '../../styles';
+import { color, media } from '../../styles';
 import { Box1 } from '../../styles/components';
 
 const LinkIconsTemplate = styled.div`
@@ -22,14 +22,38 @@ const LinkIconsTemplate = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: space-around;
+    border-radius: 20px;
+    height: calc(calc(100vw - 80px) / 4);
+    background: linear-gradient(45deg, #ffffff, #F6F8FC);
+    box-shadow: 2px 2px 3px #d8dade, -2px -2px 3px #ffffff;
+    &:hover {
+      box-shadow: 3px 3px 6px #d8dade, -3px -3px 6px #ffffff;
+      color: ${color.gray[9]};
+      svg { fill: ${color.gray[9]};}
+    }
+    &:focus {
+      box-shadow: inset 3px 3px 5px #d8dade, inset -3px -3px 4px #ffffff;
+      color: ${color.orange[8]};
+      svg { fill: ${color.orange[8]};}
+    }
+    & + button {
+      margin-left: 16px;
+    }
+    ${media.md`flex:initial;`}
+    ${media.md` & + button {margin-left: 0;};`}
     ${media.md`width: calc(calc(100% - 16px) / 2);`}
     ${media.md`height: calc(calc(100% - 16px) / 2);`}
     ${media.xl`height: calc(calc(100% - 16px) / 2);`}
-    ${media.md`${Box1}`}
-    ${media.md`flex:initial;`}
-    transition: all .2s ease;
+    ${media.md`
+      box-shadow:  4px 4px 6px #d8dade, -4px -4px 6px #ffffff;
+      &:hover { box-shadow:  6px 6px 9px #d8dade, -6px -6px 9px #ffffff; }
+      `}
+    color: ${color.gray[7]};
+    transition: all 0.2s ease;
     svg {
+      fill: ${color.gray[7]};
       height: 44px;
+      transition: all 0.2s ease;
     }
     span {
       margin-top: 4px;
