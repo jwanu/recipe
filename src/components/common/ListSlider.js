@@ -14,6 +14,7 @@ const ListSliderTemplate = styled.div`
   }
   .sliderContainer {
     width: 100%;
+    overflow-y: visible;
     overflow-x: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -34,20 +35,42 @@ const ListSliderTemplate = styled.div`
       display: flex;
       flex-wrap: nowrap;
       width: fit-content;
-      ${media.md`justify-content: space-between;`}
+      overflow: visible;
+      padding-bottom: 16px;
 
       .slideItem {
         ${Box1}
-        width: 36vw;
-        height: 36vw;
-        ${media.md`width: calc(calc(100vw - 80px) / 4);`}
-        ${media.md`height: calc(calc(100vw - 80px) / 4);`}
+        width: calc(calc(100vw - 80px) / 4);
+        height: calc(calc(100vw - 80px) / 4);
         ${media.lg`width: calc(calc(100vw - 320px) / 4);`}
         ${media.lg`height: calc(calc(100vw - 320px) / 4);`}
         ${media.xl`width: 206px;`}
         ${media.xl`height: 206px;`}
+        box-shadow: 2px 2px 3px #d8dade, -2px -2px 3px #ffffff;
+        &:hover {
+          box-shadow: 3px 3px 6px #d8dade, -3px -3px 6px #ffffff;
+        }
         & + .slideItem {
           margin-left: 16px;
+        }
+        ${media.md`display: flex;`}
+        ${media.md`flex-direction: column;`}
+
+        .image {
+          height:100%;
+          ${media.md`height: 70%;`}
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .info{
+          display: none;
+          ${media.md`display:block;`}
+          padding: 8px;
+          font-size: ${size.font.xs};
+          ${media.lg`font-size: ${size.font.sm};`}
+          text-overflow: ellipsis;
         }
       }
     }
@@ -60,8 +83,15 @@ const ListSlider = ({ title, list }) => {
       <h2>{title}</h2>
       <div className="sliderContainer">
         <div className="slider">
-          {list.map(item => (
-          <div className="slideItem">{item.title}</div>
+          {list.map((item) => (
+            <div className="slideItem">
+              <div className="image">
+                <img src={item.image} alt={item.title} />
+              </div>
+              <div className="info">
+                <h3>{item.title}</h3>
+              </div>
+            </div>
           ))}
         </div>
       </div>

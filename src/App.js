@@ -9,6 +9,7 @@ import MyPage from "./pages/MyPage";
 import mainPage from "./pages/mainPage";
 import HeaderTemplate from "./components/header/HeaderTemplate";
 import SearchPage from "./pages/SearchPage";
+import RecipePage from "./pages/RecipePage";
 
 const RoutePage = styled.div`
   position: relative;
@@ -31,7 +32,7 @@ function App() {
     <>
       <Sidebar />
       <RoutePage>
-        <HeaderTemplate />
+        <Route component={RecipePage} path="/recipe" />
         <Route component={TrendPage} path="/trend" />
         <Route component={BookmarkPage} path="/bookmark" />
         <Route component={MyPage} path="/mypage" />

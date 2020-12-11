@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useParams } from 'react-router-dom';
 import RecipeList from '../components/common/RecipeList';
+import HeaderTemplate from '../components/header/HeaderTemplate';
+import { getSearchResult } from '../modules/search';
 
-const SearchPage = ({ query }) => {
+const SearchPage = () => {
+  let { query } = useParams();
   const [searchResult, setSearchResult] = useState({
     offset: 0,
     number: 2,
@@ -30,26 +33,14 @@ const SearchPage = ({ query }) => {
     ],
     totalResults: 86,
   });
-  const getSearchResult = async () => {
-    try {
-      //   const response = await axios.get(
-      //     `https://api.spoonacular.com/recipes/complexSearch?number=2&query=${query}&apiKey=49cb5e7e6be34a2bbcfb86a9603d5926`
-      //   );
-      //   setSearchResult(response.data);
-
-      //FAKE DATA
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
+  
   useEffect(() => {
     getSearchResult();
   }, []);
 
   return (
     <div>
-      <h1>할로</h1>
+      <HeaderTemplate search back />
       <RecipeList title={`Result for '${query}'`} list={searchResult.results} />
     </div>
   );
