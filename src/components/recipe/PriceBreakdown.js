@@ -1,10 +1,11 @@
 import React from "react";
 import { PieChart } from "react-minimal-pie-chart";
 import styled from "styled-components";
-import { color, size } from "../../styles";
+import { color, size, media } from "../../styles";
 
 const PbTemplate = styled.div`
   margin-top: 16px;
+  ${media.lg`width: calc(50% - 8px);`}
   .header {
     font-size: ${size.font.md};
     font-weight: bold;
@@ -48,6 +49,7 @@ const segStyle = {
 };
 
 const PriceBreakdown = ({ pb }) => {
+  console.log(pb.ingredients);
   const chartData = pb.ingredients.map((item) => ({
     title: item.name,
     value: item.price,

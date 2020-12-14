@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import { color, size } from "../../styles";
+import React from 'react';
+import styled from 'styled-components';
+import { color, size } from '../../styles';
 
 const InstructionTemplate = styled.div`
   color: ${color.gray[9]};
@@ -9,31 +9,39 @@ const InstructionTemplate = styled.div`
     font-weight: bold;
   }
   .instruction {
+    margin-top: 16px;
     .itemname {
       font-size: ${size.font};
+      font-weight: bold;
+      text-decoration: underline;
     }
     .step {
-      border-bottom: 2px dashed orange;
+      margin-top: 16px;
+      padding: 16px;
+      border-radius: 20px;
+      box-shadow: 2px 2px 3px #d8dade, -2px -2px 3px #ffffff;
       .instEquipList {
+        margin-top: 8px;
+        h5 {
+          font-weight: bold;
+          font-size: ${size.font.sm};
+        }
         .instEquips {
           display: flex;
           flex-wrap: wrap;
           .instEquip {
-            & + .instEquip {
-              margin-left: 16px;
-            }
-            &:nth-child(4n + 1) {
-              margin-left: 0;
-            }
-            width: calc(calc(100vw - 80px) / 4);
             margin-top: 8px;
+            display: inline-flex;
+            align-items: center;
+            margin-right: 8px;
             .image {
-              height: calc(calc(100vw - 80px) / 4);
+              width: 32px;
+              height: 32px;
               background: #fff;
               box-shadow: 2px 2px 3px #d8dade, -2px -2px 3px #ffffff;
               border-radius: 10px;
               overflow: hidden;
-              padding: 8px;
+              padding: 4px;
               img {
                 width: 100%;
                 height: 100%;
@@ -41,7 +49,7 @@ const InstructionTemplate = styled.div`
               }
             }
             .name {
-              margin-top: 6px;
+              margin-left: 8px;
               font-size: ${size.font.xs};
               text-align: center;
             }
@@ -49,25 +57,27 @@ const InstructionTemplate = styled.div`
         }
       }
       .instIngredientList {
+        margin-top: 8px;
+        h5 {
+          font-weight: bold;
+          font-size: ${size.font.sm};
+        }
         .instIngredients {
           display: flex;
           flex-wrap: wrap;
           .instingrdnt {
-            & + .instingrdnt {
-              margin-left: 16px;
-            }
-            &:nth-child(4n + 1) {
-              margin-left: 0;
-            }
-            width: calc(calc(100vw - 80px) / 4);
             margin-top: 8px;
+            display: inline-flex;
+            align-items: center;
+            margin-right: 8px;
             .image {
-              height: calc(calc(100vw - 80px) / 4);
+              width: 32px;
+              height: 32px;
               background: #fff;
               box-shadow: 2px 2px 3px #d8dade, -2px -2px 3px #ffffff;
               border-radius: 10px;
               overflow: hidden;
-              padding: 8px;
+              padding: 4px;
               img {
                 width: 100%;
                 height: 100%;
@@ -75,12 +85,20 @@ const InstructionTemplate = styled.div`
               }
             }
             .name {
-              margin-top: 6px;
+              margin-left: 8px;
               font-size: ${size.font.xs};
               text-align: center;
             }
           }
         }
+      }
+      .stepNo {
+        font-weight: bold;
+      }
+      .howTo{
+        margin-top: 8px;
+        font-size: ${size.font.sm};
+        line-height: 1.1rem;
       }
     }
   }
@@ -91,10 +109,11 @@ const Instructions = ({ inst }) => {
     <InstructionTemplate>
       <h3 className="header">Instructions</h3>
       {inst.map((item, idx) => (
-        <div className="instruction" key={idx}>
+        <div className="instruction" key={`inst${idx}`}>
           <div className="itemname">{item.name}</div>
           {item.steps.map((step) => (
             <div className="step" key={step.number}>
+            <div className="stepNo">Step {step.number}</div>
               {step.equipment.length > 0 && (
                 <div className="instEquipList">
                   <h5>Equipments</h5>
@@ -102,9 +121,7 @@ const Instructions = ({ inst }) => {
                     {step.equipment.map((equip) => (
                       <div className="instEquip" key={equip.id}>
                         <div className="image">
-                          <img
-                            src={`https://spoonacular.com/cdn/equipment_100x100/${equip.image}`}
-                          />
+                          <img src={`https://spoonacular.com/cdn/equipment_100x100/${equip.image}`} />
                         </div>
                         <div className="name">{equip.name}</div>
                       </div>
@@ -119,9 +136,7 @@ const Instructions = ({ inst }) => {
                     {step.ingredients.map((ingrdnt) => (
                       <div className="instingrdnt" key={ingrdnt.id}>
                         <div className="image">
-                          <img
-                            src={`https://spoonacular.com/cdn/ingredients_100x100/${ingrdnt.image}`}
-                          />
+                          <img src={`https://spoonacular.com/cdn/ingredients_100x100/${ingrdnt.image}`} />
                         </div>
                         <div className="name">{ingrdnt.name}</div>
                       </div>

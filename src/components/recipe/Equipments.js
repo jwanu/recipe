@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { color, size } from '../../styles';
+import { color, size, media } from '../../styles';
 
 const EquipmentsTemplate = styled.div`
+    ${media.lg`width: calc(50% - 8px);`}
+    ${media.lg`margin-left: 16px;`}
     margin-top: 16px;
     color: ${color.gray[8]};
     .header { 
@@ -15,11 +17,16 @@ const EquipmentsTemplate = styled.div`
       flex-wrap: wrap;
       .equipment {
         & + .equipment { margin-left: 16px }
-        &:nth-child(4n + 1) { margin-left: 0 }
+        &:nth-child(4n + 1) {
+          margin-left: 0;
+        }
         width: calc(calc(100vw - 80px) / 4);
+        ${media.lg`width: calc(calc(100% - 48px) / 4);`}
         margin-top: 8px;
         .image{
           height: calc(calc(100vw - 80px) / 4);
+          ${media.lg`height: 80px;`}
+          ${media.xl`height: calc(calc(872px - 112px) / 8);`}
           background: #fff;
           box-shadow: 2px 2px 3px #d8dade, -2px -2px 3px #ffffff;
           border-radius: 10px;
@@ -34,6 +41,7 @@ const EquipmentsTemplate = styled.div`
         .name {
           margin-top: 6px;
           font-size: ${size.font.xs};
+          font-weight: bold;
           text-align: center;
         }
       }

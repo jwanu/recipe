@@ -32,6 +32,7 @@ function App() {
     <>
       <Sidebar />
       <RoutePage>
+        <Route component={RecipePage} path="/recipe/:id" />
         <Route component={RecipePage} path="/recipe" />
         <Route component={TrendPage} path="/trend" />
         <Route component={BookmarkPage} path="/bookmark" />

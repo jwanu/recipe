@@ -43,7 +43,6 @@ const RecipeList = ({ title, list }) => {
     <RecipeListTemplate>
       <h2>{title}</h2>
       <ListItemTemplate>
-        {' '}
         {list.map((item) => (
           <li>
             <Link to={`/recipe/${item.id}`}>
