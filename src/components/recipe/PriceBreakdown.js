@@ -1,7 +1,9 @@
-import React from "react";
-import { PieChart } from "react-minimal-pie-chart";
-import styled from "styled-components";
-import { color, size, media } from "../../styles";
+import React from 'react';
+import { RiImageFill } from 'react-icons/ri';
+import { PieChart } from 'react-minimal-pie-chart';
+import styled from 'styled-components';
+import { color, size, media } from '../../styles';
+import skeleton from '../../styles/skeleton';
 
 const PbTemplate = styled.div`
   margin-top: 16px;
@@ -41,31 +43,38 @@ const PbTemplate = styled.div`
         color: ${color.gray[7]};
       }
     }
+    ${skeleton};
+    &:empty {
+      width: 100%;
+      height: calc( 100vw - 48px );
+      ${media.lg`height: 375px;`}
+      ${media.xl`height: 400px;`}
+    }
   }
 `;
 
 const segStyle = {
-  filter: "drop-shadow(1px 1px 1px #d8dade) drop-shadow(-1px -1px 1px #ffffff)",
+  filter: 'drop-shadow(1px 1px 1px #d8dade) drop-shadow(-1px -1px 1px #ffffff)',
 };
 
-const PriceBreakdown = ({ pb }) => {
-  console.log(pb.ingredients);
+const PriceBreakdown = ({ pb, loading }) => {
+  if (loading)
+    return (
+      <PbTemplate>
+        <div className="header">Price Breakdown</div>
+        <div className="chart" />
+      </PbTemplate>
+    );
   const chartData = pb.ingredients.map((item) => ({
     title: item.name,
     value: item.price,
-    color: "#F6F8FC",
+    color: '#F6F8FC',
   }));
   return (
     <PbTemplate>
       <div className="header">Price Breakdown</div>
       <div className="chart">
-        <PieChart
-          data={chartData}
-          lineWidth={30}
-          paddingAngle={8}
-          segmentsStyle={segStyle}
-          animate
-        />
+        <PieChart data={chartData} lineWidth={30} paddingAngle={8} segmentsStyle={segStyle} animate />
         <div className="chartInside">
           <h4>TOTAL COST</h4>
           <div className="cost">$ {pb.totalCost}</div>

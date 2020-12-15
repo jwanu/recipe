@@ -1,7 +1,6 @@
 import React from 'react';
 import RecipeList from '../components/common/RecipeList';
 import LinkIcons from '../components/main/LinkIcons';
-import AutocompleteContainer from '../containers/AutocompleteContainer';
 
 const TrendPage = () => {
     return (

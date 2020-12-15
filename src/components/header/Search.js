@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { color } from '../../styles';
 import styled from 'styled-components';
-import { RiBodyScanFill, RiSearchLine } from 'react-icons/ri';
-import { Link, Redirect, useHistory } from 'react-router-dom';
-import axios from 'axios';
+import { RiSearchLine } from 'react-icons/ri';
+import { useHistory } from 'react-router-dom';
+import Autocomplete from '../../modules/Autocomplete';
 
 const SearchTemplate = styled.div`
   position: absolute;
@@ -13,7 +13,9 @@ const SearchTemplate = styled.div`
   border-radius: 40px;
   background: #f6f8fc;
   box-shadow: inset 4px 4px 6px #d8dade, inset -6px -6px 6px #ffffff;
-  &:hover { box-shadow: inset 2px 2px 3px #d8dade, inset -2px -2px 3px #ffffff; }
+  &:hover {
+    box-shadow: inset 2px 2px 3px #d8dade, inset -2px -2px 3px #ffffff;
+  }
   width: 240px;
   min-height: 40px;
   transition: all 0.2s ease;
@@ -58,15 +60,39 @@ const SearchTemplate = styled.div`
       ul {
         li {
           color: ${color.gray[8]};
-          button {
+
+          a {
             width: 100%;
-            display: block;
-            padding: 16px 40px;
-            text-align: left;
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            .image {
+              height: 32px;
+              width: 32px;
+              border-radius: 10px;
+              overflow: hidden;
+              margin-right: 12px;
+              img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
+            }
           }
           &:hover {
             background: ${color.gray[1]};
           }
+        }
+      }
+      .exception {
+        padding: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          width: 50px;
+          height: 50px;
         }
       }
     }
@@ -75,21 +101,7 @@ const SearchTemplate = styled.div`
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [autocomp, setAutocomp] = useState([]);
   let history = useHistory();
-
-  const autocomplete = async () => {
-    try {
-      // const response = await axios.get(`https://api.spoonacular.com/recipes/autocomplete?number=5&query=${searchQuery}&apiKey=49cb5e7e6be34a2bbcfb86a9603d5926`);
-      // setAutocomp(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  useEffect(() => {
-    autocomplete();
-  }, [searchQuery]);
 
   const onChange = (e) => {
     e.target.value ? setSearchQuery(e.target.value) : setSearchQuery('');
@@ -97,32 +109,20 @@ const Search = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target[0]);
-    e.target.focus();
-    if(e.target[0] == e.nativeEvent.submitter.value) setSearchQuery(e.target[0].value);
-    else setSearchQuery(e.nativeEvent.submitter.value);
+    e.target[0].blur();
     history.push(`/search/${searchQuery}`);
   };
-
-  const autocomClick = (e) => {
-  }
 
   return (
     <SearchTemplate>
       <form onSubmit={onSubmit}>
-      <div className="searchField">
-        <RiSearchLine />
-        <input type="search" placeholder="dish, ingredient..." onChange={onChange} value={searchQuery} />
+        <div className="searchField">
+          <RiSearchLine />
+          <input type="search" placeholder="dish, ingredient..." onChange={onChange} value={searchQuery} />
         </div>
-      <div className="autocompleteBox">
-        <ul>
-          {autocomp.map((autocom) => (
-            <li key={autocom.id} >
-              <button value={autocom.title}>{autocom.title}</button>
-            </li>
-          ))}
-        </ul>
-      </div>
+        <div className="autocompleteBox">
+          <Autocomplete query={searchQuery} />
+        </div>
       </form>
     </SearchTemplate>
   );

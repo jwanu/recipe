@@ -1,13 +1,12 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import styled from "styled-components";
-import { media, size, theme } from "./styles";
+import { media } from "./styles";
 import Sidebar from "./components/sidebar/Sidebar";
 import TrendPage from "./pages/TrendPage";
 import BookmarkPage from "./pages/BookmarkPage";
 import MyPage from "./pages/MyPage";
 import mainPage from "./pages/mainPage";
-import HeaderTemplate from "./components/header/HeaderTemplate";
 import SearchPage from "./pages/SearchPage";
 import RecipePage from "./pages/RecipePage";
 
@@ -17,7 +16,7 @@ const RoutePage = styled.div`
   overflow: visible;
   margin: 16px;
   transition: all .2s ease;
-  ${media.lg`margin: 16px 0;`}
+  ${media.lg`margin: 0;`}
   ${media.lg`top: 24px;`}
   ${media.lg`padding-top: 28px;`}
   ${media.lg`width: calc(100% - 272px);`}
@@ -33,7 +32,6 @@ function App() {
       <Sidebar />
       <RoutePage>
         <Route component={RecipePage} path="/recipe/:id" />
-        <Route component={RecipePage} path="/recipe" />
         <Route component={TrendPage} path="/trend" />
         <Route component={BookmarkPage} path="/bookmark" />
         <Route component={MyPage} path="/mypage" />

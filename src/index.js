@@ -5,11 +5,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
-import { createStore } from 'redux';
-import rootReducer from './modules';
-import { Provider } from 'react-redux';
+// import { createStore } from 'redux';
+// import rootReducer from './modules';
+// import { Provider } from 'react-redux';
 
-const store = createStore(rootReducer);
+// const store = createStore(rootReducer);
 
 const GlobalStyles = createGlobalStyle`
   ${reset}
@@ -40,12 +40,10 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 ReactDOM.render(
-  <Provider store={store}>
-    <BrowserRouter>
-      <GlobalStyles />
-      <App />
-    </BrowserRouter>
-  </Provider>,
+  <BrowserRouter>
+    <GlobalStyles />
+    <App />
+  </BrowserRouter>,
   document.getElementById('root')
 );
 

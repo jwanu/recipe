@@ -19,6 +19,9 @@ const StyledButton = styled.button`
       box-shadow: inset 3px 3px 5px #d8dade, inset -3px -3px 4px #ffffff;
       color: ${color.gray[9]};
     }
+  & + button {
+    margin-left: 8px;
+  }
 `;
 
 const Button = ({ ...props }) => {

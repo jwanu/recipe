@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { color, size } from '../../styles';
+import skeleton from '../../styles/skeleton';
 
 const InstructionTemplate = styled.div`
   color: ${color.gray[9]};
@@ -10,6 +11,8 @@ const InstructionTemplate = styled.div`
   }
   .instruction {
     margin-top: 16px;
+    ${skeleton};
+    &:empty { height: 120px;}
     .itemname {
       font-size: ${size.font};
       font-weight: bold;
@@ -104,7 +107,16 @@ const InstructionTemplate = styled.div`
   }
 `;
 
-const Instructions = ({ inst }) => {
+const Instructions = ({ inst, loading }) => {
+  if (loading) return (
+    <InstructionTemplate>
+      <h3 className="header">Instructions</h3>
+      <div className="instruction" />
+      <div className="instruction" />
+      <div className="instruction" />
+      <div className="instruction" />
+    </InstructionTemplate>
+  )
   return (
     <InstructionTemplate>
       <h3 className="header">Instructions</h3>

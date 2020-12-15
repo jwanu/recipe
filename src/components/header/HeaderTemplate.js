@@ -7,10 +7,14 @@ import { RiArrowLeftLine, RiBookmarkLine } from 'react-icons/ri';
 
 const HeaderTemp = styled.div`
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  width: 100%;
   height: 40px;
   margin-bottom: 16px;
+  .iconArea {
+    display: flex;
+  }
 `;
 
 const HeaderTemplate = ({ logo, title, search, back, bookmark }) => {
@@ -23,7 +27,8 @@ const HeaderTemplate = ({ logo, title, search, back, bookmark }) => {
   }
 
   return (
-    <HeaderTemp> {/* 버튼부분이랑 검색부분 나누기! 디브로*/}
+    <HeaderTemp>
+      <div className="iconArea">
       {logo && <div>LOGO</div>}
       {back && (
         <Button onClick={goBack}>
@@ -35,6 +40,7 @@ const HeaderTemplate = ({ logo, title, search, back, bookmark }) => {
           <RiBookmarkLine />
         </Button>
       )}
+      </div>
       {title && <h1>{title}</h1>}
       {search && <Search />}
     </HeaderTemp>
