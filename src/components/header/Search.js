@@ -121,7 +121,7 @@ const Search = () => {
           <input type="search" placeholder="dish, ingredient..." onChange={onChange} value={searchQuery} />
         </div>
         <div className="autocompleteBox">
-          <Autocomplete query={searchQuery} />
+          {searchQuery.length > 0 && <Autocomplete query={searchQuery} />}
         </div>
       </form>
     </SearchTemplate>

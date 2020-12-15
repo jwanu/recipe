@@ -4,6 +4,9 @@ import styled from 'styled-components';
 
 const RecipeListTemplate = styled.div`
   width: 100%;
+  h2 {
+    font-weight: bold;
+  }
 `;
 
 const ListItemTemplate = styled.ul`
@@ -26,6 +29,7 @@ const ListItemTemplate = styled.ul`
         img {
           height: 100%;
           width: 100%;
+          object-fit: cover;
         }
       }
       .info {
@@ -38,20 +42,24 @@ const ListItemTemplate = styled.ul`
   }
 `;
 
-const RecipeList = ({ title, list }) => {
+const RecipeList = ({ title, data }) => {
   return (
     <RecipeListTemplate>
       <h2>{title}</h2>
       <ListItemTemplate>
-        {list.map((item) => (
+        {data.results.map((item) => (
           <li>
             <Link to={`/recipe/${item.id}`}>
               <div className="thumbnail">
                 <img src={item.image} />
               </div>
               <div className="info">
-              <h3>{item.title}</h3>
-
+                <h3>{item.title}</h3>
+                <div>
+                  Score: {item.spoonacularScore}<br />
+                  RedayInMinutes: {item.readyInMinutes} <br />
+                  Servings: {item.servings}
+                </div>
               </div>
             </Link>
           </li>
@@ -62,14 +70,3 @@ const RecipeList = ({ title, list }) => {
 };
 
 export default RecipeList;
-
-// {item.id}
-// {item.title}
-// {item.image}
-// {item.imageType}
-// {item.calories}
-// {item.carbs}
-// {item.fat}
-// {item.protein}
-// lowfat 같은거하려면 요청에 sort랑 sortDirection 봐야할듯.
-//
