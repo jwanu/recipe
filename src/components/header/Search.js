@@ -12,13 +12,13 @@ const SearchTemplate = styled.div`
   background: #fff;
   border-radius: 40px;
   background: #f6f8fc;
-  box-shadow: inset 4px 4px 6px #d8dade, inset -6px -6px 6px #ffffff;
   min-height: 40px;
   transition: all 0.2s ease;
   overflow: hidden;
   width: auto;
   margin-left: 24px;
-  &:hover { box-shadow: inset 2px 2px 3px #d8dade, inset -2px -2px 3px #ffffff; }
+   box-shadow: inset 2px 2px 4px #d8dade, inset -2px -2px 4px #ffffff;
+  &:hover {box-shadow: inset 4px 4px 6px #d8dade, inset -4px -4px 4px #ffffff; }
   .searchField {
     display: flex;
     justify-content: center;

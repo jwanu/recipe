@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from '../common/Button';
@@ -21,38 +21,34 @@ const HeaderTemp = styled.div`
 `;
 
 const HeaderTemplate = ({ id, logo, search, back, bookmark, share }) => {
+  const [cookies, setCookie] = useCookies(['bookmarked','visited']);
   const [shareVisible, setShareVisible] = useState(false);
+  const [isSaved, setIsSaved] = useState(cookies.bookmarked? cookies.bookmarked.some((recipe) => recipe.id === id) : false);
   let history = useHistory();
-  const goBack = () => {
-    history.goBack();
-  };
-  const [cookies, setCookie] = useCookies(['bookmarked']);
 
-  //지금레시피가 북마크쿠키에 있는지 검증
-  const isSaved = (id) => {
-    let cookieT = cookies.bookmarked;
-    return cookieT && cookieT.some((recipe) => recipe.id === id);
-  }
+  //History기록 만들기.
+  // useEffect(() => {
+  //   let cookieTemp = cookies.visited;
+  //   if (cookieTemp) cookieTemp = [];
+  //   cookies.visited.filter((record) => record.id !== id)
+  // },[]);
 
-  //북마크토글버튼 누르면 쿠키템프가 없으면 빈배열 넣고 북마크추가,
-  //지금 페이지가 저장되어있으면 삭제해줘야됨 리팩리팩!
-  let cookieTemp = cookies.bookmarked;
   const addBookmark = () => {
-    cookieTemp.push({ id: id, title: 'title', image: 'image' });
+    let cookieTemp = cookies.bookmarked;
+    if (!cookieTemp) cookieTemp = [];
+    cookieTemp.push({id: id, title: 'title'});
     setCookie('bookmarked', cookieTemp, { path: '/' });
+    setIsSaved(true);
   };
   const removeBookmark = () => {
-    cookieTemp = cookieTemp.filter((bookmark) => bookmark.id !== id);
+    let cookieTemp = cookies.bookmarked.filter((bookmark) => bookmark.id !== id);
     setCookie('bookmarked', cookieTemp, { path: '/' });
+    setIsSaved(false);
   };
 
   const bookmarkToggle = () => {
-    let cookieTemp = cookies.bookmarked;
-    if (!cookieTemp) {
-      cookieTemp = [];
-      return addBookmark();
-    }
-    isSaved(id) ? removeBookmark() : addBookmark();
+    if (isSaved) return removeBookmark();
+    return addBookmark();
   };
 
   const shareToggle = () => setShareVisible(!shareVisible);
@@ -62,12 +58,12 @@ const HeaderTemplate = ({ id, logo, search, back, bookmark, share }) => {
       <div className="iconArea">
         {logo && <div>LOGO</div>}
         {back && (
-          <Button onClick={goBack}>
+          <Button onClick={() => history.goBack()}>
             <RiArrowLeftLine />
           </Button>
         )}
         {bookmark && (
-          <Button onClick={bookmarkToggle} active={isSaved(id)}>
+          <Button onClick={bookmarkToggle} active={isSaved}>
             {isSaved ? <RiBookmarkFill /> : <RiBookmarkLine />}
           </Button>
         )}

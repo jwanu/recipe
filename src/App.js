@@ -26,23 +26,6 @@ const RoutePage = styled.div`
   ${media.xl`transform: translateX(154px);`}
 `;
 
-const recipeNow = () => {
-  return recipeInfo;
-}
-
-const initialState = {
-  recipeInfo: { id: '', title: '', image: ''}
-}
-
-function reducer(state, action) {
-  switch (action.type) {
-    case 'RECIPE_NOW':
-      return {
-        recipeInfo: state.recipeInfo
-      }
-  }
-}
-
 function App() {
   return (
     <>
