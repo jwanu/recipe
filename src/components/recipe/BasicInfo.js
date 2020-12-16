@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { css, keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 import { color, media, size } from '../../styles';
 import {
   RiUser6Line,
@@ -15,9 +15,9 @@ const StyledH1 = styled.h1`
   font-size: ${size.font.lg};
   font-weight: bold;
   ${media.lg`width: 100%;`};
-  ${skeleton};
+  ${props => props.loading? skeleton : ''};
   &:empty {
-    height: ${size.font.lg};
+    height: ${props => props.loading? size.font.lg : ''};
   }
 `;
 
@@ -25,9 +25,9 @@ const CreditsText = styled.div`
   font-size: ${size.font.xs};
   color: ${color.gray[6]};
   ${media.lg`width:100%;`};
-  ${skeleton};
+  ${props => props.loading? skeleton : ''};
   &:empty {
-    height: ${size.font.lg};
+    height: ${props => props.loading? size.font.xs : ''};
   }
 `;
 
@@ -43,7 +43,7 @@ const MainImage = styled.div`
     height: 100%;
     object-fit: cover;
   }
-  ${skeleton};
+  ${props => props.loading? skeleton : ''};
 `;
 const NumeralInfo = styled.div`
   ${media.lg`width: calc(50% - 8px);`}
@@ -81,7 +81,7 @@ const NumeralInfo = styled.div`
         font-size: ${size.font.sm};
       }
     }
-    ${skeleton};
+    ${props => props.loading? skeleton : ''};
   }
 `;
 const SpecialtyIcons = styled.div`
@@ -126,14 +126,14 @@ const DishType = styled.div`
   border-radius: 20px;
   box-shadow: 2px 2px 3px #d8dade, -2px -2px 3px #ffffff;
   ${media.lg`width: 100%;`};
-  ${skeleton};
+  ${props => props.loading? skeleton : ''};
   h3 {
     font-weight: bold;
     font-size: ${size.font.md};
     margin-bottom: 6px;
   }
   &:empty {
-    height: 80px;
+    height: ${props => props.loading? '80px' : ''};
   }
 `;
 
@@ -145,9 +145,9 @@ const Summary = styled.div`
   width: 100%;
   font-size: ${size.font.sm};
   line-height: ${size.font.md};
-  ${skeleton};
+  ${props => props.loading? skeleton : ''};
   &:empty {
-    height: 160px;
+    height: ${props => props.loading? '160px' : ''};
   }
   b {
     font-weight: bold;
@@ -192,16 +192,16 @@ const IngredientSection = styled.div`
           height: 100%;
           object-fit: contain;
         }
-        ${skeleton};
+        ${props => props.loading? skeleton : ''};
       }
       .name {
         margin-top: 6px;
         font-size: ${size.font.xs};
         font-weight: bold;
         text-align: center;
-        ${skeleton};
+        ${props => props.loading? skeleton : ''};
         &:empty {
-          height: ${size.font.xs};
+          height: ${props => props.loading? size.font.xs : ''};
         }
       }
       .metric {
@@ -217,9 +217,9 @@ const BasicInfo = ({ detail, loading }) => {
   if (loading)
     return (
       <>
-        <StyledH1 />
-        <MainImage />
-        <NumeralInfo>
+        <StyledH1 loading />
+        <MainImage loading />
+        <NumeralInfo loading>
           <div className="info" />
           <div className="info" />
           <div className="info" />
@@ -227,9 +227,9 @@ const BasicInfo = ({ detail, loading }) => {
           <div className="info" />
           <div className="info" />
         </NumeralInfo>
-        <DishType />
-        <Summary />
-        <IngredientSection>
+        <DishType loading />
+        <Summary loading />
+        <IngredientSection loading>
           <h3 className="header">Ingredients</h3>
           <div className="ingredients">
             <div className="ingredient">

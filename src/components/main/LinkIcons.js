@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { color, media } from '../../styles';
-import { Box1 } from '../../styles/components';
 
 const LinkIconsTemplate = styled.div`
   margin-top: 16px;

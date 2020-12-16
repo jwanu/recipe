@@ -1,5 +1,4 @@
 import React from 'react';
-import ListSlider from '../components/common/ListSlider';
 import HeaderTemplate from '../components/header/HeaderTemplate';
 import LinkIcons from '../components/main/LinkIcons';
 import MainpageTemplate from '../components/main/MainpageTemplate';

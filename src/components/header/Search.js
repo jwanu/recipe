@@ -3,24 +3,22 @@ import { color } from '../../styles';
 import styled from 'styled-components';
 import { RiSearchLine } from 'react-icons/ri';
 import { useHistory } from 'react-router-dom';
-import Autocomplete from '../../modules/Autocomplete';
+import Autocomplete from '../../api/Autocomplete';
 
 const SearchTemplate = styled.div`
-  position: absolute;
+  position: relative;
   top: 0;
   right: 0;
   background: #fff;
   border-radius: 40px;
   background: #f6f8fc;
   box-shadow: inset 4px 4px 6px #d8dade, inset -6px -6px 6px #ffffff;
-  &:hover {
-    box-shadow: inset 2px 2px 3px #d8dade, inset -2px -2px 3px #ffffff;
-  }
-  width: 240px;
   min-height: 40px;
   transition: all 0.2s ease;
   overflow: hidden;
-  z-index: 10;
+  width: auto;
+  margin-left: 24px;
+  &:hover { box-shadow: inset 2px 2px 3px #d8dade, inset -2px -2px 3px #ffffff; }
   .searchField {
     display: flex;
     justify-content: center;
@@ -48,6 +46,8 @@ const SearchTemplate = styled.div`
     }
   }
   &:focus-within {
+    position: absolute;
+    z-index: 10;
     width: 100%;
     border-radius: 20px;
     background: #f6f8fc;

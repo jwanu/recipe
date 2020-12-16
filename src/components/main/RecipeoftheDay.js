@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { color, media, size } from '../../styles';
-import { Box1 } from '../../styles/components';
 
 const RecipeoftheDayTemplate = styled.div`
   display: flex;

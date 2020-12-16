@@ -42,13 +42,29 @@ const ListItemTemplate = styled.ul`
   }
 `;
 
-const RecipeList = ({ title, data }) => {
+const RecipeList = ({ title, data, loading }) => {
+  if ( loading ) 
+  return (
+    <RecipeListTemplate>
+      <h2>{title}</h2>
+      <ListItemTemplate>
+      <li>
+            <a>
+              <div className="thumbnail" />
+              <div className="info">
+                <h3/>
+              </div>
+            </a>
+          </li>
+      </ListItemTemplate>
+    </RecipeListTemplate>
+  )
   return (
     <RecipeListTemplate>
       <h2>{title}</h2>
       <ListItemTemplate>
         {data.results.map((item) => (
-          <li>
+          <li key={item.id}>
             <Link to={`/recipe/${item.id}`}>
               <div className="thumbnail">
                 <img src={item.image} />

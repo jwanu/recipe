@@ -5,11 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
-// import { createStore } from 'redux';
-// import rootReducer from './modules';
-// import { Provider } from 'react-redux';
-
-// const store = createStore(rootReducer);
+import { CookiesProvider } from 'react-cookie';
 
 const GlobalStyles = createGlobalStyle`
   ${reset}
@@ -33,7 +29,6 @@ const GlobalStyles = createGlobalStyle`
     list-style: none;
   }
   body {
-    @import url('https://fonts.googleapis.com/earlyaccess/notosanskr.css');
     font-family: "Noto Sans KR", sans-serif !important;
     background: #F6F8FC;
   }
@@ -41,8 +36,10 @@ const GlobalStyles = createGlobalStyle`
 
 ReactDOM.render(
   <BrowserRouter>
-    <GlobalStyles />
-    <App />
+    <CookiesProvider>
+      <GlobalStyles />
+      <App />
+    </CookiesProvider>
   </BrowserRouter>,
   document.getElementById('root')
 );

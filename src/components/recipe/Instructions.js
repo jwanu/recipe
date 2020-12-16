@@ -11,8 +11,8 @@ const InstructionTemplate = styled.div`
   }
   .instruction {
     margin-top: 16px;
-    ${skeleton};
-    &:empty { height: 120px;}
+    ${props => props.loading? skeleton : ''};
+    &:empty { height: ${props => props.loading? '120px' : ''};}
     .itemname {
       font-size: ${size.font};
       font-weight: bold;
@@ -109,7 +109,7 @@ const InstructionTemplate = styled.div`
 
 const Instructions = ({ inst, loading }) => {
   if (loading) return (
-    <InstructionTemplate>
+    <InstructionTemplate loading>
       <h3 className="header">Instructions</h3>
       <div className="instruction" />
       <div className="instruction" />

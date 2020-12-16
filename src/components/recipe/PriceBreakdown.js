@@ -43,12 +43,12 @@ const PbTemplate = styled.div`
         color: ${color.gray[7]};
       }
     }
-    ${skeleton};
+    ${props => props.loading? skeleton: ''};
     &:empty {
       width: 100%;
-      height: calc( 100vw - 48px );
-      ${media.lg`height: 375px;`}
-      ${media.xl`height: 400px;`}
+      height: ${props => props.loading? 'calc( 100vw - 48px )' : ''};
+      ${media.lg`height: ${props => props.loading? '375px' : ''};`}
+      ${media.xl`height: ${props => props.loading? '400px': ''};`}
     }
   }
 `;
@@ -60,7 +60,7 @@ const segStyle = {
 const PriceBreakdown = ({ pb, loading }) => {
   if (loading)
     return (
-      <PbTemplate>
+      <PbTemplate loading>
         <div className="header">Price Breakdown</div>
         <div className="chart" />
       </PbTemplate>

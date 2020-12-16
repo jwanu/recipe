@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { createContext, useState } from 'react';
 import axios from 'axios';
 import { useAsync } from 'react-async';
 import BasicInfo from '../components/recipe/BasicInfo';
@@ -837,7 +837,7 @@ export const RecipeDetailData = ({ id }) => {
   const { data, error, isLoading } = useAsync({ promiseFn: getDetailData, id, watch: id });
   if (isLoading) return <BasicInfo loading />;
   if (error) return <div className="exception">Something went wrong</div>;
-  if (data) return <BasicInfo detail={data} />;
+  if (data) return (<BasicInfo detail={data} />);
   return null;
 };
 

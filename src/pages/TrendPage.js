@@ -3,10 +3,13 @@ import RecipeList from '../components/common/RecipeList';
 import LinkIcons from '../components/main/LinkIcons';
 
 const TrendPage = () => {
-    return (
-        <div>
-            <LinkIcons />
-            <RecipeList title={'Recently Uploaded Recipes'} list={[
+  return (
+    <div>
+      <LinkIcons />
+      <RecipeList
+        title={'Recently Uploaded Recipes'}
+        data={{
+          results: [
             {
               id: 716429,
               calories: 584,
@@ -27,9 +30,11 @@ const TrendPage = () => {
               protein: '35g',
               title: 'What to make for dinner tonight?? Bruschetta Style Pork & Pasta',
             },
-          ]} />
-        </div>
-    );
+          ],
+        }}
+      />
+    </div>
+  );
 };
 
 export default TrendPage;

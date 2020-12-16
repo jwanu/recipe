@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { color, media, size } from '../../styles';
-import { RecipeDetailData, RecipeEquipmentData, RecipeInstructionData, RecipePbData } from '../../modules/RecipeData';
+import { RecipeDetailData, RecipeEquipmentData, RecipeInstructionData, RecipePbData } from '../../api/RecipeData';
 
 const StyledTemplate = styled.div`
   color: ${color.gray[9]};
@@ -12,6 +12,7 @@ const StyledTemplate = styled.div`
 `;
 
 const RecipeTemplate = ({ id }) => {
+
   return (
     <StyledTemplate>
       <RecipeDetailData id={id} />

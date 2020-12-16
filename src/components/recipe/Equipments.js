@@ -35,7 +35,7 @@ const EquipmentsTemplate = styled.div`
         border-radius: 10px;
         overflow: hidden;
         padding: 8px;
-        ${skeleton};
+        ${props => props.loading? skeleton : ''};
         img {
           width: 100%;
           height: 100%;
@@ -47,9 +47,9 @@ const EquipmentsTemplate = styled.div`
         font-size: ${size.font.xs};
         font-weight: bold;
         text-align: center;
-        ${skeleton};
+        ${props => props.loading? skeleton : ''};
         &:empty {
-          height: ${size.font.xs};
+          height: ${props => props.loading? size.font.xs : ''};
         }
       }
     }
@@ -59,7 +59,7 @@ const EquipmentsTemplate = styled.div`
 const Equipments = ({ equip, loading }) => {
   if (loading)
     return (
-      <EquipmentsTemplate>
+      <EquipmentsTemplate loading>
         <h3 className="header">Equipments</h3>
         <div className="equipments">
           <div className="equipment">
