@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { media, color, size } from '../../styles';
 import { Link, NavLink } from 'react-router-dom';
 import { RiHomeFill, RiBookmarkFill, RiUserFill, RiFireFill } from 'react-icons/ri';
