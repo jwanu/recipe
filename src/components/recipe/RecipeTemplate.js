@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { color, media, size } from '../../styles';
+import { color, media } from '../../styles';
 import { RecipeDetailData, RecipeEquipmentData, RecipeInstructionData, RecipePbData } from '../../api/RecipeData';
 
 const StyledTemplate = styled.div`

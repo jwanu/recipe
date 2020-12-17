@@ -105,7 +105,7 @@ const SideBar = () => {
   return (
     <SideTemplateBlock>
       <div className="logo-area">
-        <Link to="/">RECIPE</Link>
+        <Link to="/">RECIPEDIA</Link>
       </div>
       <div className="menu">
         <NavLink exact to="/" activeClassName={'active'}>

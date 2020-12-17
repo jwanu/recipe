@@ -6,6 +6,11 @@ import reportWebVitals from './reportWebVitals';
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 import { CookiesProvider } from 'react-cookie';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import rootReducer from './modules';
+
+const store = createStore(rootReducer);
 
 const GlobalStyles = createGlobalStyle`
   ${reset}
@@ -36,10 +41,12 @@ const GlobalStyles = createGlobalStyle`
 
 ReactDOM.render(
   <BrowserRouter>
-    <CookiesProvider>
-      <GlobalStyles />
-      <App />
-    </CookiesProvider>
+    <Provider store={store}>
+      <CookiesProvider>
+        <GlobalStyles />
+        <App />
+      </CookiesProvider>
+    </Provider>
   </BrowserRouter>,
   document.getElementById('root')
 );

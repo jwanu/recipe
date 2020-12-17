@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from '../common/Button';
 import Search from './Search';
 import { RiArrowLeftLine, RiBookmarkFill, RiBookmarkLine, RiShareLine } from 'react-icons/ri';
 import Share from './Share';
 import { useCookies } from 'react-cookie';
+import { useSelector } from 'react-redux';
 
 const HeaderTemp = styled.div`
   display: flex;
@@ -18,25 +19,43 @@ const HeaderTemp = styled.div`
   .iconArea {
     display: flex;
   }
+  .iconArea{
+    .logo{
+      font-size: 40px;
+      font-weight: bold;
+      color: #f6f8fc;
+      text-shadow: 2px 2px 3px #d8dade, -2px -2px 3px #ffffff;
+    }
+  }
 `;
 
-const HeaderTemplate = ({ id, logo, search, back, bookmark, share }) => {
-  const [cookies, setCookie] = useCookies(['bookmarked','visited']);
+const HeaderTemplate = ({ logo, search, back, bookmark, share }) => {
+  const { id, title, score, readyInMinutes, servings } = useSelector((state) => ({
+    id: state.recipeNow.id,
+    title: state.recipeNow.title,
+    score: state.recipeNow.score,
+    readyInMinutes: state.recipeNow.readyInMinutes,
+    servings: state.recipeNow.servings,
+  }));
+  const [cookies, setCookie] = useCookies(['bookmarked', 'visited']);
   const [shareVisible, setShareVisible] = useState(false);
-  const [isSaved, setIsSaved] = useState(cookies.bookmarked? cookies.bookmarked.some((recipe) => recipe.id === id) : false);
+  const [isSaved, setIsSaved] = useState(cookies.bookmarked ? cookies.bookmarked.some((recipe) => recipe.id === id) : false);
   let history = useHistory();
 
-  //History기록 만들기.
+  // 페이지 전체 렌더된 후에 한번만 실행되도록 만들어야함... ㅠㅠ
   // useEffect(() => {
+  //   console.log('HeaderTemplate.js렌더링');
   //   let cookieTemp = cookies.visited;
-  //   if (cookieTemp) cookieTemp = [];
-  //   cookies.visited.filter((record) => record.id !== id)
+  //   if (!cookieTemp) cookieTemp = [];
+  //   cookieTemp = cookieTemp.filter((record) => record.id !== id);
+  //   cookieTemp.push({ id: id, title: title, score: score, readyInMinutes: readyInMinutes, servings: servings, savedTime: Date.now() });
+  //   setCookie('visited', cookieTemp, { path: '/' });
   // },[]);
 
   const addBookmark = () => {
     let cookieTemp = cookies.bookmarked;
     if (!cookieTemp) cookieTemp = [];
-    cookieTemp.push({id: id, title: 'title'});
+    cookieTemp.push({ id: id, title: title, score: score, readyInMinutes: readyInMinutes, servings: servings, savedTime: Date.now() });
     setCookie('bookmarked', cookieTemp, { path: '/' });
     setIsSaved(true);
   };
@@ -56,9 +75,10 @@ const HeaderTemplate = ({ id, logo, search, back, bookmark, share }) => {
   return (
     <HeaderTemp>
       <div className="iconArea">
-        {logo && <div>LOGO</div>}
+        {logo && <Link to={"/"} className="logo">RECIPEDIA</Link>}
         {back && (
-          <Button onClick={() => history.goBack()}>
+          <Button onClick={() =>{ 
+            history.goBack()}}>
             <RiArrowLeftLine />
           </Button>
         )}

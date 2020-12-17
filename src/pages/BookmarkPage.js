@@ -1,25 +1,18 @@
 import React from 'react';
 import RecipeList from '../components/common/RecipeList';
+import { useCookies } from 'react-cookie';
 
 const BookmarkPage = () => {
+  const [cookies] = useCookies(['bookmarked']);
+  const data = cookies.bookmarked;
+  if(!data) data = [];
+  data.map(v => v.image = `https://spoonacular.com/recipeImages/${v.id}-90x90`);
   return (
     <>
       <RecipeList
         title="Bookmarked"
-        data={{
-          results: [
-            {
-              id: 716429,
-              image: 'https://spoonacular.com/recipeImages/716429-312x231.jpg',
-              title: 'Pasta with Garlic, Scallions, Cauliflower & Breadcrumbs',
-            },
-            {
-              id: 711312,
-              image: 'https://spoonacular.com/recipeImages/716429-312x231.jpg',
-              title: 'Pasta with Garlic, Scallions, Cauliflower & Breadcrumbs',
-            },
-          ],
-        }}
+        data={{ results: data }}
+        bookmark
       />
     </>
   );
