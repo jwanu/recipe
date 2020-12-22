@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { media, size } from '../../styles';
 import { Box1 } from '../../styles/components';
-import RecipeList from './RecipeList';
 
 const ListSliderTemplate = styled.div`
   position: relative;
@@ -83,8 +82,8 @@ const ListSlider = ({ title, list }) => {
       <h2>{title}</h2>
       <div className="sliderContainer">
         <div className="slider">
-          {list.map((item) => (
-            <div className="slideItem">
+          {list.map((item, idx) => (
+            <div className="slideItem" key={idx}>
               <div className="image">
                 <img src={item.image} alt={item.title} />
               </div>

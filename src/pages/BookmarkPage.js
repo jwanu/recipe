@@ -4,7 +4,7 @@ import { useCookies } from 'react-cookie';
 
 const BookmarkPage = () => {
   const [cookies] = useCookies(['bookmarked']);
-  const data = cookies.bookmarked;
+  let data = cookies.bookmarked;
   if(!data) data = [];
   data.map(v => v.image = `https://spoonacular.com/recipeImages/${v.id}-90x90`);
   return (
