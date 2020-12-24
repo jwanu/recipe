@@ -123,17 +123,17 @@ const Instructions = ({ inst, loading }) => {
       {inst.map((item, idx) => (
         <div className="instruction" key={`inst${idx}`}>
           <div className="itemname">{item.name}</div>
-          {item.steps.map((step) => (
-            <div className="step" key={step.number}>
+          {item.steps.map((step,stepidx) => (
+            <div className="step" key={`${stepidx}_${step.number}`}>
             <div className="stepNo">Step {step.number}</div>
               {step.equipment.length > 0 && (
                 <div className="instEquipList">
                   <h5>Equipments</h5>
                   <div className="instEquips">
                     {step.equipment.map((equip) => (
-                      <div className="instEquip" key={equip.id}>
+                      <div className="instEquip" key={`${stepidx}_${equip.id}`}>
                         <div className="image">
-                          <img src={`https://spoonacular.com/cdn/equipment_100x100/${equip.image}`} />
+                          <img src={`https://spoonacular.com/cdn/equipment_100x100/${equip.image}`} alt={`inst_${stepidx}_${equip.name}`}/>
                         </div>
                         <div className="name">{equip.name}</div>
                       </div>
@@ -146,9 +146,9 @@ const Instructions = ({ inst, loading }) => {
                   <h5>Ingredients</h5>
                   <div className="instIngredients">
                     {step.ingredients.map((ingrdnt) => (
-                      <div className="instingrdnt" key={ingrdnt.id}>
+                      <div className="instingrdnt" key={`${stepidx}_${ingrdnt.id}`}>
                         <div className="image">
-                          <img src={`https://spoonacular.com/cdn/ingredients_100x100/${ingrdnt.image}`} />
+                          <img src={`https://spoonacular.com/cdn/ingredients_100x100/${ingrdnt.image}`} alt={`inst_${stepidx}_${ingrdnt.name}`} />
                         </div>
                         <div className="name">{ingrdnt.name}</div>
                       </div>

@@ -270,7 +270,7 @@ const BasicInfo = ({ detail, loading }) => {
       <StyledH1>{detail.title}</StyledH1>
       <CreditsText>{detail.creditsText}</CreditsText>
       <MainImage>
-        <img src={detail.image} />
+        <img src={detail.image} alt={detail.title} />
       </MainImage>
       <NumeralInfo>
         <div className="info">
@@ -480,7 +480,7 @@ const BasicInfo = ({ detail, loading }) => {
           {detail.extendedIngredients.map((ingredient) => (
             <div className="ingredient" key={ingredient.id}>
               <div className="image">
-                <img src={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}`} />
+                <img src={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}`} alt={ingredient.name} />
               </div>
               <div className="name">{ingredient.name}</div>
               <div className="metric">

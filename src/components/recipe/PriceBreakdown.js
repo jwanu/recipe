@@ -1,5 +1,4 @@
 import React from 'react';
-import { RiImageFill } from 'react-icons/ri';
 import { PieChart } from 'react-minimal-pie-chart';
 import styled from 'styled-components';
 import { color, size, media } from '../../styles';

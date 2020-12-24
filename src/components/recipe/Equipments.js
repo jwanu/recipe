@@ -88,7 +88,7 @@ const Equipments = ({ equip, loading }) => {
         {equip.map((item) => (
           <div className="equipment" key={`equipmentListItem_${item.name}`}>
             <div className="image">
-              <img src={`https://spoonacular.com/cdn/equipment_100x100/${item.image}`} />
+              <img src={`https://spoonacular.com/cdn/equipment_100x100/${item.image}`} alt={item.name}/>
             </div>
             <div className="name">{item.name}</div>
           </div>
