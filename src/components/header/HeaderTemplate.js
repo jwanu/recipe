@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from '../common/Button';
@@ -37,20 +37,10 @@ const HeaderTemplate = ({ logo, search, back, bookmark, share }) => {
     readyInMinutes: state.recipeNow.readyInMinutes,
     servings: state.recipeNow.servings,
   }));
-  const [cookies, setCookie] = useCookies(['bookmarked', 'visited']);
+  const [cookies, setCookie] = useCookies(['bookmarked']);
   const [shareVisible, setShareVisible] = useState(false);
   const [isSaved, setIsSaved] = useState(cookies.bookmarked ? cookies.bookmarked.some((recipe) => recipe.id === id) : false);
   let history = useHistory();
-
-  // 페이지 전체 렌더된 후에 한번만 실행되도록 만들어야함... ㅠㅠ
-  // useEffect(() => {
-  //   console.log('HeaderTemplate.js렌더링');
-  //   let cookieTemp = cookies.visited;
-  //   if (!cookieTemp) cookieTemp = [];
-  //   cookieTemp = cookieTemp.filter((record) => record.id !== id);
-  //   cookieTemp.push({ id: id, title: title, score: score, readyInMinutes: readyInMinutes, servings: servings, savedTime: Date.now() });
-  //   setCookie('visited', cookieTemp, { path: '/' });
-  // },[]);
 
   const addBookmark = () => {
     let cookieTemp = cookies.bookmarked;

@@ -117,11 +117,11 @@ const RecipeList = ({ title, data, loading, bookmark }) => {
     <RecipeListTemplate>
       <h2>{title}</h2>
       <ul>
-        {data.length > 0? (data.results.map((item) => (
+        {data.results.length > 0? (data.results.map((item) => (
           <li key={item.id}>
             <Link to={`/recipe/${item.id}`}>
               <div className="thumbnail">
-                <img src={item.image} />
+                <img src={item.image} alt={item.title} />
               </div>
               <div className="info">
                 <h3>{item.title}</h3>

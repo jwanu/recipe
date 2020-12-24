@@ -86,7 +86,7 @@ const Equipments = ({ equip, loading }) => {
       <h3 className="header">Equipments</h3>
       <div className="equipments">
         {equip.map((item) => (
-          <div className="equipment" key={item.name}>
+          <div className="equipment" key={`equipmentListItem_${item.name}`}>
             <div className="image">
               <img src={`https://spoonacular.com/cdn/equipment_100x100/${item.image}`} />
             </div>

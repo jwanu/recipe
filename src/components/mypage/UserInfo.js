@@ -66,7 +66,7 @@ const UserInfo = () => {
   return (
     <UserInfoTemplate>
       <div className="image">
-        <img src="https://media.tenor.com/images/188a527bae76f8a2baad0b13e2494aff/tenor.png" />
+        <img src="https://media.tenor.com/images/188a527bae76f8a2baad0b13e2494aff/tenor.png" alt="myPicture" />
       </div>
       <div className="info">
         <h2>Kim Jwanu</h2>
