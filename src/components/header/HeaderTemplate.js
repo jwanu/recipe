@@ -65,7 +65,7 @@ const HeaderTemplate = ({ logo, search, back, bookmark, share }) => {
   return (
     <HeaderTemp>
       <div className="iconArea">
-        {logo && <Link to={"/"} className="logo">RECIPEDIA</Link>}
+        {logo && <Link to={`${process.env.PUBLIC_URL}/`} className="logo">RECIPEDIA</Link>}
         {back && (
           <Button onClick={() =>{ 
             history.goBack()}}>
