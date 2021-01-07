@@ -19,8 +19,8 @@ const HeaderTemp = styled.div`
   .iconArea {
     display: flex;
   }
-  .iconArea{
-    .logo{
+  .iconArea {
+    .logo {
       font-size: 40px;
       font-weight: bold;
       color: #f6f8fc;
@@ -62,13 +62,25 @@ const HeaderTemplate = ({ logo, search, back, bookmark, share }) => {
 
   const shareToggle = () => setShareVisible(!shareVisible);
 
+  const historyConfig = {
+    basename: 'recipp',
+  };
+  const history = createBrowserHistory(historyConfig);
+
   return (
     <HeaderTemp>
       <div className="iconArea">
-        {logo && <Link to={"/"} className="logo">RECIPEDIA</Link>}
+        {logo && (
+          <Link to={'/'} className="logo">
+            RECIPEDIA
+          </Link>
+        )}
         {back && (
-          <Button onClick={() =>{ 
-            history.goBack()}}>
+          <Button
+            onClick={() => {
+              history.goBack();
+            }}
+          >
             <RiArrowLeftLine />
           </Button>
         )}

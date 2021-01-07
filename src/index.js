@@ -40,7 +40,7 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 ReactDOM.render(
-  <BrowserRouter history={browserHistory} basename={'recipp'}>
+  <BrowserRouter basename={'/recipp'}>
     <Provider store={store}>
       <CookiesProvider>
         <GlobalStyles />
