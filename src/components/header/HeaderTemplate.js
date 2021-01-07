@@ -19,8 +19,8 @@ const HeaderTemp = styled.div`
   .iconArea {
     display: flex;
   }
-  .iconArea {
-    .logo {
+  .iconArea{
+    .logo{
       font-size: 40px;
       font-weight: bold;
       color: #f6f8fc;
@@ -40,10 +40,7 @@ const HeaderTemplate = ({ logo, search, back, bookmark, share }) => {
   const [cookies, setCookie] = useCookies(['bookmarked']);
   const [shareVisible, setShareVisible] = useState(false);
   const [isSaved, setIsSaved] = useState(cookies.bookmarked ? cookies.bookmarked.some((recipe) => recipe.id === id) : false);
-  const historyConfig = {
-    basename: 'recipp',
-  };
-  const history = createBrowserHistory(historyConfig);
+  let history = useHistory();
 
   const addBookmark = () => {
     let cookieTemp = cookies.bookmarked;
@@ -68,17 +65,10 @@ const HeaderTemplate = ({ logo, search, back, bookmark, share }) => {
   return (
     <HeaderTemp>
       <div className="iconArea">
-        {logo && (
-          <Link to={'/'} className="logo">
-            RECIPEDIA
-          </Link>
-        )}
+        {logo && <Link to={"/"} className="logo">RECIPEDIA</Link>}
         {back && (
-          <Button
-            onClick={() => {
-              history.goBack();
-            }}
-          >
+          <Button onClick={() =>{ 
+            history.goBack()}}>
             <RiArrowLeftLine />
           </Button>
         )}
