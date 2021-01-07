@@ -40,7 +40,10 @@ const HeaderTemplate = ({ logo, search, back, bookmark, share }) => {
   const [cookies, setCookie] = useCookies(['bookmarked']);
   const [shareVisible, setShareVisible] = useState(false);
   const [isSaved, setIsSaved] = useState(cookies.bookmarked ? cookies.bookmarked.some((recipe) => recipe.id === id) : false);
-  let history = useHistory();
+  const historyConfig = {
+    basename: 'recipp',
+  };
+  const history = createBrowserHistory(historyConfig);
 
   const addBookmark = () => {
     let cookieTemp = cookies.bookmarked;
@@ -61,11 +64,6 @@ const HeaderTemplate = ({ logo, search, back, bookmark, share }) => {
   };
 
   const shareToggle = () => setShareVisible(!shareVisible);
-
-  const historyConfig = {
-    basename: 'recipp',
-  };
-  const history = createBrowserHistory(historyConfig);
 
   return (
     <HeaderTemp>
