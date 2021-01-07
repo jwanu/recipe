@@ -64,7 +64,7 @@ const LinkIconsTemplate = styled.div`
 const LinkIcons = () => {
   let history = useHistory();
   const onClick = (cat) => {
-    history.push(`${process.env.PUBLIC_URL}/search/${cat}`);
+    history.push(`/search/${cat}`);
   }
   return (
     <LinkIconsTemplate>

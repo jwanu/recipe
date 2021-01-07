@@ -31,12 +31,12 @@ function App() {
     <>
       <Sidebar />
       <RoutePage>
-          <Route component={RecipePage} path={`${process.env.PUBLIC_URL}/recipe/:id`} />
-          <Route component={TrendPage} path={`${process.env.PUBLIC_URL}/trend`} />
-          <Route component={BookmarkPage} path={`${process.env.PUBLIC_URL}/bookmark`} />
-          <Route component={MyPage} path={`${process.env.PUBLIC_URL}/mypage`} />
-          <Route component={SearchPage} path={`${process.env.PUBLIC_URL}/search/:query`} />
-          <Route component={mainPage} exact path={`${process.env.PUBLIC_URL}/`} />
+          <Route component={RecipePage} path="/recipe/:id" />
+          <Route component={TrendPage} path="/trend" />
+          <Route component={BookmarkPage} path="/bookmark" />
+          <Route component={MyPage} path="/mypage" />
+          <Route component={SearchPage} path="/search/:query" />
+          <Route component={mainPage} exact path="/" />
       </RoutePage>
     </>
   );

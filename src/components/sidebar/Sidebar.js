@@ -105,22 +105,22 @@ const SideBar = () => {
   return (
     <SideTemplateBlock>
       <div className="logo-area">
-        <Link to={`${process.env.PUBLIC_URL}/`}>RECIPEDIA</Link>
+        <Link to="/">RECIPEDIA</Link>
       </div>
       <div className="menu">
-        <NavLink exact to={`${process.env.PUBLIC_URL}/`} activeClassName={'active'}>
+        <NavLink exact to="/" activeClassName={'active'}>
           <RiHomeFill />
           <span>Home</span>
         </NavLink>
-        <NavLink to={`${process.env.PUBLIC_URL}/trend`} activeClassName={'active'}>
+        <NavLink to="/trend" activeClassName={'active'}>
           <RiFireFill />
           <span>Trend</span>
         </NavLink>
-        <NavLink to={`${process.env.PUBLIC_URL}/bookmark`} activeClassName={'active'}>
+        <NavLink to="/bookmark" activeClassName={'active'}>
           <RiBookmarkFill />
           <span>Bookmark</span>
         </NavLink>
-        <NavLink to={`${process.env.PUBLIC_URL}/mypage`} activeClassName={'active'}>
+        <NavLink to="/mypage" activeClassName={'active'}>
           <RiUserFill />
           <span>Mypage</span>
         </NavLink>

@@ -119,7 +119,7 @@ const RecipeList = ({ title, data, loading, bookmark }) => {
       <ul>
         {data.results.length > 0? (data.results.map((item) => (
           <li key={item.id}>
-            <Link to={`${process.env.PUBLIC_URL}/recipe/${item.id}`}>
+            <Link to={`/recipe/${item.id}`}>
               <div className="thumbnail">
                 <img src={item.image} alt={item.title} />
               </div>
